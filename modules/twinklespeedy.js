@@ -224,7 +224,6 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 					tooltip: wgULS("一个通知模板将会被加入创建者的对话页，如果您启用了该理据的通知。", "一個通知模板將會被加入建立者的對話頁，如果您啟用了該理據的通知。"),
 					checked: !Morebits.userIsInGroup( 'sysop' ) || Twinkle.getPref('deleteSysopDefaultToTag'),
 					disabled: Morebits.userIsInGroup( 'sysop' ) && !Twinkle.getPref('deleteSysopDefaultToTag'),
-					hidden: true,
 					event: function( event ) {
 						event.stopPropagation();
 					}
