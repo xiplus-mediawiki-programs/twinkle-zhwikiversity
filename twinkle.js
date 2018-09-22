@@ -38,10 +38,10 @@ Twinkle.defaultConfig = {};
  */
 Twinkle.defaultConfig.twinkle = {
 	 // General
-	summaryAd: "",
-	deletionSummaryAd: " ([[WP:TW|TW]])",
-	protectionSummaryAd: " ([[WP:TW|TW]])",
-	blockSummaryAd: " ([[WP:TW|TW]])",
+	summaryAd: " ([[WV:TW|TW]])",
+	deletionSummaryAd: " ([[WV:TW|TW]])",
+	protectionSummaryAd: " ([[WV:TW|TW]])",
+	blockSummaryAd: " ([[WV:TW|TW]])",
 	userTalkPageMode: "tab",
 	dialogLargeFont: false,
 	 // Block

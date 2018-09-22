@@ -1770,7 +1770,7 @@ Twinkle.config.writePrefs = function twinkleconfigWritePrefs(pageobj) {
 		wgULS("// twinkleoptions.js到此为止\n", "// twinkleoptions.js到此為止\n");
 
 	pageobj.setPageText(text);
-	pageobj.setEditSummary(wgULS("保存Twinkle参数设置：来自[[" + Morebits.pageNameNorm + "]]的自动编辑。 ([[WP:TW|TW]])", "儲存Twinkle偏好設定：來自[[" + Morebits.pageNameNorm + "]]的自動編輯。 ([[WP:TW|TW]])"));
+	pageobj.setEditSummary(wgULS("保存Twinkle参数设置：来自[[" + Morebits.pageNameNorm + "]]的自动编辑。 ([[WV:TW|TW]])", "儲存Twinkle偏好設定：來自[[" + Morebits.pageNameNorm + "]]的自動編輯。 ([[WV:TW|TW]])"));
 	pageobj.setCreateOption("recreate");
 	pageobj.save(Twinkle.config.saveSuccess);
 };
@@ -1782,7 +1782,7 @@ Twinkle.config.saveSuccess = function twinkleconfigSaveSuccess(pageobj) {
 	noticebox.className = "successbox";
 	noticebox.style.fontSize = "100%";
 	noticebox.style.marginTop = "2em";
-	noticebox.innerHTML = wgULS("<p><b>您的Twinkle参数设置已被保存。</b></p><p>要看到这些更改，您可能需要<a href=\"" + mw.util.getUrl("WP:BYPASS") + "\" title=\"WP:BYPASS\"><b>绕过浏览器缓存</b></a>。</p>", "<p><b>您的Twinkle偏好設定已被儲存。</b></p><p>要看到這些更改，您可能需要<a href=\"" + mw.util.getUrl("WP:BYPASS") + "\" title=\"WP:BYPASS\"><b>繞過瀏覽器快取</b></a>。</p>");
+	noticebox.innerHTML = wgULS("<p><b>您的Twinkle参数设置已被保存。</b></p><p>要看到这些更改，您可能需要<a href=\"" + mw.util.getUrl("w:WP:BYPASS") + "\" title=\"w:WP:BYPASS\"><b>绕过浏览器缓存</b></a>。</p>", "<p><b>您的Twinkle偏好設定已被儲存。</b></p><p>要看到這些更改，您可能需要<a href=\"" + mw.util.getUrl("w:WP:BYPASS") + "\" title=\"w:WP:BYPASS\"><b>繞過瀏覽器快取</b></a>。</p>");
 	Morebits.status.root.appendChild(noticebox);
 	var noticeclear = document.createElement("br");
 	noticeclear.style.clear = "both";
