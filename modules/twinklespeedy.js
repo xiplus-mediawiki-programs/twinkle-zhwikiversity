@@ -85,8 +85,7 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 	dialog.setTitle( wgULS("选择快速删除理由", "選擇快速刪除理由") );
 	dialog.setScriptName( "Twinkle" );
 	dialog.addFooterLink( wgULS("快速删除方针", "快速刪除方針"), "Wikiversity:CSD" );
-	// dialog.addFooterLink( wgULS("常见错误", "常見錯誤"), "Wikipedia:管理员错误自查表/快速删除" );
-	// dialog.addFooterLink( wgULS("Twinkle帮助", "Twinkle說明"), "Wikiversity:TW/DOC#speedy" );
+	dialog.addFooterLink( wgULS("Twinkle帮助", "Twinkle說明"), "w:Help:Twinkle#速刪" );
 
 	var form = new Morebits.quickForm( callbackfunc, (Twinkle.getPref('speedySelectionStyle') === 'radioClick' ? 'change' : null) );
 	if( Morebits.userIsInGroup( 'sysop' ) ) {
@@ -223,9 +222,8 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 					value: 'notify',
 					name: 'notify',
 					tooltip: wgULS("一个通知模板将会被加入创建者的对话页，如果您启用了该理据的通知。", "一個通知模板將會被加入建立者的對話頁，如果您啟用了該理據的通知。"),
-					// checked: !Morebits.userIsInGroup( 'sysop' ) || Twinkle.getPref('deleteSysopDefaultToTag'),
-					checked: false,
-					// disabled: Morebits.userIsInGroup( 'sysop' ) && !Twinkle.getPref('deleteSysopDefaultToTag'),
+					checked: !Morebits.userIsInGroup( 'sysop' ) || Twinkle.getPref('deleteSysopDefaultToTag'),
+					disabled: Morebits.userIsInGroup( 'sysop' ) && !Twinkle.getPref('deleteSysopDefaultToTag'),
 					hidden: true,
 					event: function( event ) {
 						event.stopPropagation();
@@ -347,22 +345,6 @@ Twinkle.speedy.callback.modeChanged = function twinklespeedyCallbackModeChanged(
 	//}
 
 	switch (namespace) {
-		// case 0:  // article
-		// 	work_area.append( { type: 'header', label: wgULS('条目', '條目') } );
-		// 	work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.generateCsdList(Twinkle.speedy.articleList, mode) } );
-		// 	break;
-
-		// case 2:  // user
-		// 	work_area.append( { type: 'header', label: wgULS('用户页', '使用者頁面') } );
-		// 	work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.generateCsdList(Twinkle.speedy.userList, mode) } );
-
-		// case 3:  // user talk
-		// 	if (mw.util.isIPAddress(mw.config.get('wgRelevantUserName'))) {
-		// 		work_area.append( { type: 'header', label: wgULS('用户讨论页', '使用者討論') } );
-		// 		work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.generateCsdList(Twinkle.speedy.usertalkList, mode) } );
-		// 	}
-		// 	break;
-
 		case 6:  // file
 			work_area.append( { type: 'header', label: wgULS('文件', '檔案') } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.generateCsdList(Twinkle.speedy.fileList, mode) } );
@@ -372,11 +354,6 @@ Twinkle.speedy.callback.modeChanged = function twinklespeedyCallbackModeChanged(
 			work_area.append( { type: 'header', label: wgULS('分类', '分類') } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.generateCsdList(Twinkle.speedy.categoryList, mode) } );
 			break;
-
-		// case 118:  // draft
-		// 	work_area.append( { type: 'header', label: wgULS('草稿', '草稿') } );
-		// 	work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.generateCsdList(Twinkle.speedy.draftList, mode) } );
-		// 	break;
 
 		default:
 			break;
@@ -1453,8 +1430,8 @@ Twinkle.speedy.callback.evaluateUser = function twinklespeedyCallbackEvaluateUse
 		values: values,
 		normalizeds: normalizeds,
 		watch: watchPage,
-		usertalk: false,
-		welcomeuser: false,
+		usertalk: notifyuser,
+		welcomeuser: welcomeuser,
 		lognomination: csdlog,
 		templateParams: Twinkle.speedy.getParameters( form, values )
 	};
