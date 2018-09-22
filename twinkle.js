@@ -6,15 +6,9 @@
  * |                           修改前请联系维护者。                          |
  * +-------------------------------------------------------------------------+
  *
- * 从Github导入[https://github.com/Xi-Plus/twinkle]
+ * 从Github导入[https://github.com/Xi-Plus/twinkle-zhwikiversity]
  * 基於 [https://github.com/jimmyxu/twinkle] 和 [https://github.com/vjudge1/twinkle] 的修改
  *
- * ----------
- *
- * 这是经过亂改的Twinkle，是让維護者自己方便使用维基百科的
- * 好帮手。请参见[[WP:TW]]以获取更多信息。
- *
- * 维护者：~~~
  */
 
 //<nowiki>
@@ -94,8 +88,8 @@ Twinkle.defaultConfig.twinkle = {
 	watchSpeedyPages: [ ],
 	markSpeedyPagesAsPatrolled: true,
 	// these next two should probably be identical by default
-	notifyUserOnSpeedyDeletionNomination: [ "db", "g1", "g2", "g3", "g5", "g11", "g12", "g13", "g16", "a1", "a2", "a5", "a6", "f6", "r2", "r3" ],
-	welcomeUserOnSpeedyDeletionNotification: [ "db", "g1", "g2", "g3", "g5", "g11", "g12", "g13", "g16", "a1", "a2", "a5", "a6", "f6", "r2", "r3" ],
+	notifyUserOnSpeedyDeletionNomination: [ "db", "g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8", "g9", "f1", "r1" ],
+	welcomeUserOnSpeedyDeletionNotification: [ "db", "g1", "g2", "g3", "g4", "g5", "g6", "g7", "g8", "g9", "f1", "r1" ],
 	promptForSpeedyDeletionSummary: [],
 	openUserTalkPageOnSpeedyDelete: [  ],
 	deleteTalkPageOnDelete: true,
@@ -105,7 +99,7 @@ Twinkle.defaultConfig.twinkle = {
 	speedyWindowWidth: 800,
 	logSpeedyNominations: false,
 	speedyLogPageName: "CSD日志",
-	noLogOnSpeedyNomination: [ "o1" ],
+	noLogOnSpeedyNomination: [  ],
 	enlargeG11Input: false,
 	 // Unlink
 	unlinkNamespaces: [ "0", "10", "100", "118" ],
@@ -136,10 +130,10 @@ Twinkle.defaultConfig.twinkle = {
 	batchProtectChunks: 50,
 	batchundeleteChunks: 50,
 	proddeleteChunks: 50,
-	revisionTags: "Twinkle",
-	configPage: "Wikipedia:Twinkle/参数设置",
+	revisionTags: "",
+	configPage: "Wikiversity:Twinkle/參數設置",
 	projectNamespaceName: mw.config.get("wgFormattedNamespaces")[4],
-	sandboxPage: "Wikipedia:沙盒",
+	sandboxPage: "Wikiversity:沙盒",
 };
 
 // now some skin dependent config.
@@ -476,33 +470,33 @@ Twinkle.load = function () {
 
 	// Load the modules in the order that the tabs should appear
 	// User/user talk-related
-	Twinkle.arv();
-	Twinkle.warn();
-	if ( Morebits.userIsInGroup('sysop') ) {
-		Twinkle.block();
-	}
+	// Twinkle.arv();
+	// Twinkle.warn();
+	// if ( Morebits.userIsInGroup('sysop') ) {
+	// 	Twinkle.block();
+	// }
 	// Twinkle.shared();
-	Twinkle.talkback();
+	// Twinkle.talkback();
 	// Deletion
 	Twinkle.speedy();
-	Twinkle.copyvio();
-	Twinkle.xfd();
-	Twinkle.image();
+	// Twinkle.copyvio();
+	// Twinkle.xfd();
+	// Twinkle.image();
 	// Maintenance
-	Twinkle.protect();
-	Twinkle.tag();
+	// Twinkle.protect();
+	// Twinkle.tag();
 	// Misc. ones last
 	Twinkle.diff();
-	Twinkle.unlink();
+	// Twinkle.unlink();
 	Twinkle.config.init();
 	Twinkle.fluff.init();
-	if ( Morebits.userIsInGroup('sysop') ) {
-		Twinkle.batchdelete();
-		Twinkle.batchundelete();
-	}
-	if (Twinkle.getPref('XfdClose') !== 'hide') {
-		Twinkle.close();
-	}
+	// if ( Morebits.userIsInGroup('sysop') ) {
+	// 	Twinkle.batchdelete();
+	// 	Twinkle.batchundelete();
+	// }
+	// if (Twinkle.getPref('XfdClose') !== 'hide') {
+	// 	Twinkle.close();
+	// }
 
 	Twinkle.addPortletLink( mw.util.wikiScript("index") + "?title=" + Twinkle.getPref('configPage'), wgULS('设置', '設定'), 'tw-config', wgULS('设置Twinkle参数', '設定Twinkle參數') );
 
