@@ -403,11 +403,6 @@ Twinkle.speedy.generateCsdList = function twinklespeedyGenerateCsdList(list, mod
 	return $.map(list, function(critElement) {
 		var criterion = $.extend({}, critElement);
 
-		// hack to get the g11 radio / checkbox right
-		if (criterion.value === 'g11') {
-			criterion.style = Twinkle.getPref('enlargeG11Input') ? 'height: 2em; width: 2em; height: -moz-initial; width: -moz-initial; -moz-transform: scale(2); -o-transform: scale(2);' : '';
-		}
-
 		if (multiple) {
 			if (criterion.hideWhenMultiple) {
 				return null;

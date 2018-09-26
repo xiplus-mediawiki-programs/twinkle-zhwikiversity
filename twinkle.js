@@ -77,7 +77,6 @@ Twinkle.defaultConfig.twinkle = {
 	logSpeedyNominations: false,
 	speedyLogPageName: "CSD日志",
 	noLogOnSpeedyNomination: [  ],
-	enlargeG11Input: false,
 	 // Unlink
 	unlinkNamespaces: [ "0", "10", "100", "118" ],
 	 // Warn

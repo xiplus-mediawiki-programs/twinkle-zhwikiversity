@@ -449,13 +449,6 @@ Twinkle.config.sections = [
 			type: "set",
 			setValues: Twinkle.config.commonSets.csdAndDICriteria,
 			setDisplayOrder: Twinkle.config.commonSets.csdAndDICriteriaDisplayOrder
-		},
-
-		{
-			name: "enlargeG11Input",
-			label: wgULS("扩大CSD G11的按钮", "擴大CSD G11的按鈕"),
-			helptip: wgULS("扩为默认的两倍大。", "擴為預設的兩倍大。"),
-			type: "boolean"
 		}
 	]
 },
