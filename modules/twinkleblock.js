@@ -102,7 +102,7 @@ Twinkle.block.callback = function twinkleblockCallback() {
 			Morebits.quickForm.setElementVisibility($form.find('[name=actiontype][value=protect]').parent(), true);
 		}
 
-		// clean up preset data (defaults, etc.), done exactly once, must be before Twinkle.block.callback.change_action is called
+		// clean up preset data (defaults, etc.), done exactly once, must be before Twinkle.block.callback.change_action is called
 		Twinkle.block.transformBlockPresets();
 
 		// init the controls after user and block info have been fetched
@@ -554,12 +554,18 @@ Twinkle.block.blockPresetsInfo = {
 	},
 	'checkuserblock' : {
 		expiry: 'infinity',
+		expiry: '1 week',
+		forAnonOnly: true,
+		nocreate: true,
 		nonstandard: true,
 		reason: '{{checkuserblock}}',
 		sig: '~~~~'
 	},
 	'checkuserblock-account' : {
+		autoblock: true,
 		expiry: 'infinity',
+		forRegisteredOnly: true,
+		nocreate: true,
 		nonstandard: true,
 		reason: '{{checkuserblock-account}}',
 		sig: '~~~~'
@@ -574,6 +580,7 @@ Twinkle.block.blockPresetsInfo = {
 	//	sig: null
 	//},
 	'schoolblock' : {
+		forAnonOnly: true,
 		nocreate: true,
 		nonstandard: true,
 		reason: '{{schoolblock}}',
@@ -588,6 +595,7 @@ Twinkle.block.blockPresetsInfo = {
 	'uw-ablock' : {
 		autoblock: true,
 		expiry: '24 hours',
+		forAnonOnly: true,
 		nocreate: true,
 		reasonParam: true
 	},
@@ -816,9 +824,7 @@ Twinkle.block.callback.toggle_see_alsos = function twinkleblockCallbackToggleSee
 		return el !== this.value;
 	}.bind(this));
 
-	if (this.checked) {
-		Twinkle.block.seeAlsos.push(this.value);
-	}
+	if (this.checked) Twinkle.block.seeAlsos.push(this.value);
 	var seeAlsoMessage = Twinkle.block.seeAlsos.join('、');
 
 	if (!Twinkle.block.seeAlsos.length) {
@@ -1063,6 +1069,7 @@ Twinkle.block.callback.taguserpage = function twinkleblockCallbackTagUserpage(pa
 		}
 		pageobj.setPageText(pagetext);
 		pageobj.setEditSummary(wgULS("标记被永久封禁的用户页", "標記被永久封禁的用戶頁") + Twinkle.getPref('summaryAd'));
+		pageobj.setTags(Twinkle.getPref('revisionTags'));
 		pageobj.save(function(){
 			Morebits.status.info(wgULS("标记用户页", "標記用戶頁"), "完成");
 			pageobj.load(Twinkle.block.callback.protectuserpage);
@@ -1083,6 +1090,7 @@ Twinkle.block.callback.protectuserpage = function twinkleblockCallbackProtectUse
 			pageobj.setCreateProtection('sysop', 'indefinite');
 		}
 		pageobj.setEditSummary(wgULS("被永久封禁的用户页", "被永久封禁的用戶頁") + Twinkle.getPref('protectionSummaryAd'));
+		pageobj.setTags(Twinkle.getPref('revisionTags'));
 		pageobj.protect(function(){
 			Morebits.status.info(wgULS("保护用户页", "保護用戶頁"), ( pageobj.exists() ? wgULS("已全保护", "已全保護") : wgULS("已白纸保护", "已白紙保護") ));
 		});
@@ -1198,6 +1206,7 @@ Twinkle.block.callback.main = function twinkleblockcallbackMain( pageobj ) {
 
 	pageobj.setPageText( text );
 	pageobj.setEditSummary( summary );
+	pageobj.setTags(Twinkle.getPref('revisionTags'));
 	pageobj.setWatchlist( Twinkle.getPref('watchWarnings') );
 	pageobj.save();
 };
@@ -1217,5 +1226,6 @@ Twinkle.block.callback.main_flow = function twinkleblockcallbackMain( flowobj ) 
 };
 
 })(jQuery);
+
 
 //</nowiki>

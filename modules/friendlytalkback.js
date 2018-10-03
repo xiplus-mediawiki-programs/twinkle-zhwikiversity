@@ -77,21 +77,15 @@ Twinkle.talkback.callback = function( ) {
 	result.tbtarget[0].dispatchEvent( evt );
 
 	// Check whether the user has opted out from talkback
-	// TODO: wgCategories is only set on action=view (bug 45033)
-	var wgcat = mw.config.get("wgCategories");
-	if (wgcat.length && wgcat.indexOf("不希望收到回复通告的用户") === -1) {
-		Twinkle.talkback.optout = false;
-	} else {
-		var query = {
-			action: 'query',
-			prop: 'extlinks',
-			titles: mw.config.get('wgPageName'),
-			elquery: 'userjs.invalid/noTalkback',
-			ellimit: '1'
-		};
-		var wpapi = new Morebits.wiki.api("抓取opt-out信息", query, Twinkle.talkback.callback.optoutStatus);
-		wpapi.post();
-	}
+	var query = {
+		action: 'query',
+		prop: 'extlinks',
+		titles: mw.config.get('wgPageName'),
+		elquery: 'userjs.invalid/noTalkback',
+		ellimit: '1'
+	};
+	var wpapi = new Morebits.wiki.api("抓取opt-out信息", query, Twinkle.talkback.callback.optoutStatus);
+	wpapi.post();
 };
 
 Twinkle.talkback.optout = null;
@@ -304,7 +298,7 @@ var callback_evaluate = function( e ) {
 			text += "\n~~~~";
 		}
 
-		editSummary = wgULS("回复通告（[[", "回覆通告（[[");
+		var editSummary = wgULS("回复通告（[[", "回覆通告（[[");
 		if (tbtarget !== "other" && !/^\s*user talk:/i.test(tbPageName)) {
 			editSummary += "User talk:";
 		}
@@ -320,6 +314,7 @@ var callback_evaluate = function( e ) {
 	}, function () {
 		var talkpage = new Morebits.wiki.page(fullUserTalkPageName, wgULS("添加回复通告", "加入回覆通告"));
 		talkpage.setEditSummary(editSummary);
+		talkpage.setTags(Twinkle.getPref('revisionTags'));
 		talkpage.setAppendText( text );
 		talkpage.setCreateOption("recreate");
 		talkpage.setMinorEdit(Twinkle.getFriendlyPref("markTalkbackAsMinor"));

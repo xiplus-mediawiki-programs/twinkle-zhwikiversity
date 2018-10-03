@@ -293,8 +293,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"对其他用户和条目的态度": {
 			"uw-npa1": {
-				label: "针对特定用户的人身攻击",
-				summary: "层级1：针对特定用户的人身攻击"
+				label: "针对用户的人身攻击",
+				summary: "层级1：针对用户的人身攻击"
 			},
 			"uw-agf1": {
 				label: "没有假定善意",
@@ -433,8 +433,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"对其他用户和条目的态度": {
 			"uw-npa2": {
-				label: "针对特定用户的人身攻击",
-				summary: "层级2：针对特定用户的人身攻击"
+				label: "针对用户的人身攻击",
+				summary: "层级2：针对用户的人身攻击"
 			},
 			"uw-agf2": {
 				label: "没有假定善意",
@@ -573,8 +573,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"对其他用户和条目的态度": {
 			"uw-npa3": {
-				label: "针对特定用户的人身攻击",
-				summary: "层级3：针对特定用户的人身攻击"
+				label: "针对用户的人身攻击",
+				summary: "层级3：针对用户的人身攻击"
 			},
 			"uw-agf3": {
 				label: "没有假定善意",
@@ -683,8 +683,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"对其他用户和条目的态度": {
 			"uw-npa4": {
-				label: "针对特定用户的人身攻击",
-				summary: "层级4：针对特定用户的人身攻击"
+				label: "针对用户的人身攻击",
+				summary: "层级4：针对用户的人身攻击"
 			},
 			"uw-tempabuse4": {
 				label: "不当使用警告或封禁模板",
@@ -753,8 +753,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"对其他用户和条目的态度": {
 			"uw-npa4im": {
-				label: "针对特定用户的人身攻击",
-				summary: "层级4im：针对特定用户的人身攻击"
+				label: "针对用户的人身攻击",
+				summary: "层级4im：针对用户的人身攻击"
 			},
 			"uw-tempabuse4im": {
 				label: "不当使用警告或封禁模板",
@@ -979,7 +979,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"uw-username": {
 			label: "使用不恰当的用户名",
-			summary: "单层级警告：使用不恰当的用户名"
+			summary: "单层级警告：使用不恰当的用户名",
+			suppressArticleInSummary: true
 		},
 		"uw-wrongsummary": {
 			label: "在编辑摘要制造不适当的内容",
@@ -1108,8 +1109,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"對其他用戶和條目的態度": {
 			"uw-npa1": {
-				label: "針對特定用戶的人身攻擊",
-				summary: "層級1：針對特定用戶的人身攻擊"
+				label: "針對用戶的人身攻擊",
+				summary: "層級1：針對用戶的人身攻擊"
 			},
 			"uw-agf1": {
 				label: "沒有假定善意",
@@ -1248,8 +1249,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"對其他用戶和條目的態度": {
 			"uw-npa2": {
-				label: "針對特定用戶的人身攻擊",
-				summary: "層級2：針對特定用戶的人身攻擊"
+				label: "針對用戶的人身攻擊",
+				summary: "層級2：針對用戶的人身攻擊"
 			},
 			"uw-agf2": {
 				label: "沒有假定善意",
@@ -1388,8 +1389,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"對其他用戶和條目的態度": {
 			"uw-npa3": {
-				label: "針對特定用戶的人身攻擊",
-				summary: "層級3：針對特定用戶的人身攻擊"
+				label: "針對用戶的人身攻擊",
+				summary: "層級3：針對用戶的人身攻擊"
 			},
 			"uw-agf3": {
 				label: "沒有假定善意",
@@ -1498,8 +1499,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"對其他用戶和條目的態度": {
 			"uw-npa4": {
-				label: "針對特定用戶的人身攻擊",
-				summary: "層級4：針對特定用戶的人身攻擊"
+				label: "針對用戶的人身攻擊",
+				summary: "層級4：針對用戶的人身攻擊"
 			},
 			"uw-tempabuse4": {
 				label: "不當使用警告或封禁模板",
@@ -1568,8 +1569,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"對其他用戶和條目的態度": {
 			"uw-npa4im": {
-				label: "針對特定用戶的人身攻擊",
-				summary: "層級4im：針對特定用戶的人身攻擊"
+				label: "針對用戶的人身攻擊",
+				summary: "層級4im：針對用戶的人身攻擊"
 			},
 			"uw-tempabuse4im": {
 				label: "不當使用警告或封禁模板",
@@ -1794,7 +1795,8 @@ Twinkle.warn.messages = wgULS({
 		},
 		"uw-username": {
 			label: "使用不恰當的用戶名",
-			summary: "單層級警告：使用不恰當的用戶名"
+			summary: "單層級警告：使用不恰當的用戶名",
+			suppressArticleInSummary: true
 		},
 		"uw-wrongsummary": {
 			label: "在編輯摘要製造不適當的內容",
@@ -2041,7 +2043,7 @@ Twinkle.warn.callbacks = {
 		text += Twinkle.warn.callbacks.getWarningWikitext(params.sub_group, params.article,
 			params.reason, params.main_group === 'custom') + "--~~~~";
 
-		if ( Twinkle.getPref('showSharedIPNotice') && Morebits.isIPAddress( mw.config.get('wgTitle') ) ) {
+		if ( Twinkle.getPref('showSharedIPNotice') && mw.util.isIPAddress( mw.config.get('wgTitle') ) ) {
 			Morebits.status.info( '信息', wgULS('添加共享IP说明', '加入共享IP說明') );
 			text +=  "\n{{subst:SharedIPAdvice}}";
 		}
@@ -2079,6 +2081,8 @@ Twinkle.warn.callbacks = {
 			if ( messageData.suppressArticleInSummary !== true && params.article ) {
 				if ( params.sub_group === "uw-socksuspect" ) {  // this template requires a username
 					summary += "，[[User:" + params.article + "]]的";
+				} else if ( params.sub_group === "uw-bite" ) {  // this template requires a username
+					summary += "，" + wgULS("于", "於") + "[[User talk:" + params.article + "]]";
 				} else {
 					summary += wgULS("，于[[", "，於[[") + params.article + "]]";
 				}
@@ -2088,6 +2092,7 @@ Twinkle.warn.callbacks = {
 
 		pageobj.setPageText( text );
 		pageobj.setEditSummary( summary );
+		pageobj.setTags(Twinkle.getPref('revisionTags'));
 		pageobj.setWatchlist( Twinkle.getPref('watchWarnings') );
 		pageobj.save();
 	},

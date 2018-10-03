@@ -20,7 +20,7 @@ Twinkle.arv = function twinklearv() {
 		return;
 	}
 
-	var title = Morebits.isIPAddress( username ) ? wgULS('报告IP给管理员', '報告IP給管理員') : wgULS('报告用户给管理人员', '報告使用者給管理人員');
+	var title = mw.util.isIPAddress( username ) ? wgULS('报告IP给管理员', '報告IP給管理員') : wgULS('报告用户给管理人员', '報告使用者給管理人員');
 
 	Twinkle.addPortletLink( function(){ Twinkle.arv.callback(username); }, wgULS("告状", "告狀"), "tw-arv", title );
 };
@@ -156,7 +156,7 @@ Twinkle.arv.callback.changeCategory = function (e) {
 					{
 						label: wgULS('显而易见的纯破坏用户', '顯而易見的純破壞用戶'),
 						value: 'vandalonly',
-						disabled: Morebits.isIPAddress( root.uid.value )
+						disabled: mw.util.isIPAddress( root.uid.value )
 					},
 					{
 						label: wgULS('显而易见的spambot或失窃账户', '顯而易見的spambot或失竊帳戶'),
@@ -520,7 +520,7 @@ Twinkle.arv.callback.evaluate = function(e) {
 						case 'promoonly':
 							return '仅用来散发广告宣传的用户';
 						default:
-							return '位置理由';
+							return '未知理由';
 					}
 				} ).join( '，' );
 
@@ -570,7 +570,8 @@ Twinkle.arv.callback.evaluate = function(e) {
 				aivPage.setPageSection( 0 );
 				aivPage.getStatusElement().status( wgULS('添加新报告…', '加入新報告…') );
 				aivPage.setEditSummary( wgULS('报告', '報告') + '[[Special:Contributions/' + uid + '|' + uid + ']]。' + Twinkle.getPref('summaryAd') );
-				aivPage.setAppendText( '\n=== {{vandal|' + (/\=/.test( uid ) ? '1=' : '' ) + uid + '}} ===\n' + reason );
+				aivPage.setTags(Twinkle.getPref('revisionTags'));
+				aivPage.setAppendText( '\n=== {{vandal|' + (/=/.test( uid ) ? '1=' : '' ) + uid + '}} ===\n' + reason );
 				aivPage.append();
 			} );
 			break;
@@ -633,6 +634,7 @@ Twinkle.arv.callback.evaluate = function(e) {
 				}
 				uaaPage.getStatusElement().status( wgULS('添加新报告…', '加入新報告…') );
 				uaaPage.setEditSummary( wgULS('报告', '報告') + '[[Special:Contributions/' + uid + '|' + uid + ']]。'+ Twinkle.getPref('summaryAd') );
+				uaaPage.setTags(Twinkle.getPref('revisionTags'));
 				uaaPage.setAppendText( "\n" + reason );
 				uaaPage.append();
 			} );
@@ -742,6 +744,7 @@ Twinkle.arv.processSock = function( params ) {
 				var talkpage = new Morebits.wiki.page( 'User talk:' + username, '通知' + (taskname || wgULS('主账户', '主帳戶')) );
 				talkpage.setFollowRedirect( true );
 				talkpage.setEditSummary( notifyEditSummary );
+				talkpage.setTags(Twinkle.getPref('revisionTags'));
 				talkpage.setAppendText( notifyText );
 				talkpage.append(callback);
 			});
@@ -791,6 +794,7 @@ Twinkle.arv.processSock = function( params ) {
 	var spiPage = new Morebits.wiki.page( reportpage, wgULS('抓取讨论页面', '擷取討論頁面') );
 	spiPage.setFollowRedirect( true );
 	spiPage.setEditSummary( wgULS('报告', '報告') + '[[Special:Contributions/' + params.uid + '|' + params.uid + ']]。'+ Twinkle.getPref('summaryAd') );
+	spiPage.setTags(Twinkle.getPref('revisionTags'));
 	spiPage.setAppendText( text );
 	spiPage.append();
 
@@ -853,7 +857,7 @@ Twinkle.arv.processAN3 = function( params ) {
 			grouped_diffs[lastid].push(cur);
 		}
 
-		var difftext = $.map(grouped_diffs, function(sub, index){
+		var difftext = $.map(grouped_diffs, function(sub) {
 			var ret = "";
 			if(sub.length >= 2) {
 				var last = sub[0];
@@ -895,6 +899,7 @@ Twinkle.arv.processAN3 = function( params ) {
 		var an3Page = new Morebits.wiki.page( reportpage, 'Retrieving discussion page' );
 		an3Page.setFollowRedirect( true );
 		an3Page.setEditSummary( 'Adding new report for [[Special:Contributions/' + params.uid + '|' + params.uid + ']].'+ Twinkle.getPref('summaryAd') );
+		an3Page.setTags(Twinkle.getPref('revisionTags'));
 		an3Page.setAppendText( text );
 		an3Page.append();
 
@@ -906,6 +911,7 @@ Twinkle.arv.processAN3 = function( params ) {
 		var talkPage = new Morebits.wiki.page( 'User talk:' + params.uid, 'Notifying edit warrior' );
 		talkPage.setFollowRedirect( true );
 		talkPage.setEditSummary( notifyEditSummary );
+		talkPage.setTags( Twinkle.getPref('revisionTags') );
 		talkPage.setAppendText( notifyText );
 		talkPage.append();
 		Morebits.wiki.removeCheckpoint();  // all page updates have been started
