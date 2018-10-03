@@ -622,7 +622,7 @@ Twinkle.config.sections = [
 	]
 },*/
 
-/*{
+{
 	title: wgULS("存废讨论", "存廢討論"),
 	preferences: [
 		// TwinkleConfig.xfdWatchPage (string)
@@ -687,38 +687,38 @@ Twinkle.config.sections = [
 			})
 		},
 
-		{
-			name: "afdFameDefaultReason",
-			label: wgULS("默认关注度提删理由", "預設關注度提刪理由"),
-			helptip: wgULS("用于批量提删。", "用於批量提刪。"),
-			type: "string"
-		},
+		// {
+		// 	name: "afdFameDefaultReason",
+		// 	label: wgULS("默认关注度提删理由", "預設關注度提刪理由"),
+		// 	helptip: wgULS("用于批量提删。", "用於批量提刪。"),
+		// 	type: "string"
+		// },
 
-		{
-			name: "afdSubstubDefaultReason",
-			label: wgULS("默认小小作品提删理由", "預設小小作品提刪理由"),
-			helptip: wgULS("用于批量提删。", "用於批量提刪。"),
-			type: "string"
-		},
+		// {
+		// 	name: "afdSubstubDefaultReason",
+		// 	label: wgULS("默认小小作品提删理由", "預設小小作品提刪理由"),
+		// 	helptip: wgULS("用于批量提删。", "用於批量提刪。"),
+		// 	type: "string"
+		// },
 
-		{
-			name: "XfdClose",
-			label: wgULS("在存废讨论显示关闭讨论按钮", "在存廢討論顯示關閉討論按鈕"),
-			helptip: wgULS("请确保您充分了解[[Wikipedia:关闭删除讨论指南]]才开启此功能。", "請確保您充分了解[[Wikipedia:關閉刪除討論指南]]才開啟此功能。"),
-			type: "enum",
-			enumValues: wgULS({
-				"hide": "不显示",
-				"nonadminonly": "只包含非管理员可使用选项",
-				"all": "显示所有选项"
-			}, {
-				"hide": "不顯示",
-				"nonadminonly": "只包含非管理員可使用選項",
-				"all": "顯示所有選項"
-			})
-		},
+		// {
+		// 	name: "XfdClose",
+		// 	label: wgULS("在存废讨论显示关闭讨论按钮", "在存廢討論顯示關閉討論按鈕"),
+		// 	helptip: wgULS("请确保您充分了解[[Wikipedia:关闭删除讨论指南]]才开启此功能。", "請確保您充分了解[[Wikipedia:關閉刪除討論指南]]才開啟此功能。"),
+		// 	type: "enum",
+		// 	enumValues: wgULS({
+		// 		"hide": "不显示",
+		// 		"nonadminonly": "只包含非管理员可使用选项",
+		// 		"all": "显示所有选项"
+		// 	}, {
+		// 		"hide": "不顯示",
+		// 		"nonadminonly": "只包含非管理員可使用選項",
+		// 		"all": "顯示所有選項"
+		// 	})
+		// },
 	]
 
-},*/
+},
 
 /*{
 	title: wgULS("侵犯版权", "侵犯版權"),
