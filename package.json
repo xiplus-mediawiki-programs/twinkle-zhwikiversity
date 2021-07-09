@@ -5,7 +5,9 @@
 	"repository": "Xi-Plus/twinkle-zhwikiversity",
 	"scripts": {
 		"lint": "eslint .",
-		"lint:fix": "eslint . --fix"
+		"lint:fix": "eslint . --fix",
+		"sync": "perl scripts/sync.pl",
+		"deployall": "perl scripts/sync.pl --mode=deploy --all"
 	},
 	"devDependencies": {
 		"eslint": "^7.27.0",
