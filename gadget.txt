@@ -1,1 +1,1 @@
-* Twinkle[ResourceLoader|dependencies=mediawiki.user,mediawiki.util,mediawiki.Title,jquery.ui,jquery.tipsy|type=general]|morebits.js|morebits.css|Twinkle.js|twinkleblock.js|twinkleconfig.js|friendlytag.js|twinklediff.js|twinklefluff.js|twinklespeedy.js|twinklexfd.js
+* Twinkle[ResourceLoader|dependencies=mediawiki.api,mediawiki.user,mediawiki.util,mediawiki.Title,jquery.ui,jquery.tipsy|type=general]|morebits.js|morebits.css|Twinkle.js|twinkleblock.js|twinkleconfig.js|friendlytag.js|twinklediff.js|twinklefluff.js|twinklespeedy.js|twinklexfd.js
