@@ -15,11 +15,11 @@
  * Dependencies:
  *   - The whole thing relies on jQuery.  But most wikis should provide this by default.
  *   - Morebits.quickForm, Morebits.simpleWindow, and Morebits.status rely on the "morebits.css" file for their styling.
- *   - Morebits.simpleWindow relies on jquery UI Dialog (ResourceLoader module name 'jquery.ui.dialog').
+ *   - Morebits.simpleWindow relies on jquery UI Dialog (ResourceLoader module name 'jquery.ui').
  *   - Morebits.quickForm tooltips rely on Tipsy (ResourceLoader module name 'jquery.tipsy').
  *     For external installations, Tipsy is available at [http://onehackoranother.com/projects/jquery/tipsy].
  *   - To create a gadget based on morebits.js, use this syntax in MediaWiki:Gadgets-definition:
- *       * GadgetName[ResourceLoader|dependencies=mediawiki.user,mediawiki.util,mediawiki.RegExp,jquery.ui.dialog,jquery.tipsy]|morebits.js|morebits.css|GadgetName.js
+ *       * GadgetName[ResourceLoader|dependencies=mediawiki.user,mediawiki.util,jquery.ui,jquery.tipsy]|morebits.js|morebits.css|GadgetName.js
  *
  * Most of the stuff here doesn't work on IE < 9.  It is your script's responsibility to enforce this.
  *
@@ -1770,7 +1770,7 @@ Morebits.wiki.page = function(pageName, currentAction) {
 
 		// internal status
 		pageLoaded: false,
-		editToken: null,
+		csrfToken: null,
 		loadTime: null,
 		lastEditTime: null,
 		revertCurID: null,
@@ -2045,7 +2045,7 @@ Morebits.wiki.page = function(pageName, currentAction) {
 			tags: ctx.tags,
 			title: ctx.pageName,
 			summary: ctx.editSummary,
-			token: canUseMwUserToken ? mw.user.tokens.get('editToken') : ctx.editToken,
+			token: canUseMwUserToken ? mw.user.tokens.get('csrfToken') : ctx.csrfToken,
 			watchlist: ctx.watchlistOption
 		};
 
@@ -2375,7 +2375,7 @@ Morebits.wiki.page = function(pageName, currentAction) {
 			}
 		}
 
-		return !!mw.user.tokens.get('editToken');
+		return !!mw.user.tokens.get('csrfToken');
 	};
 
 	// callback from loadSuccess() for append() and prepend() threads
@@ -2408,8 +2408,8 @@ Morebits.wiki.page = function(pageName, currentAction) {
 			}
 		}
 
-		ctx.editToken = $(xml).find('page').attr('edittoken');
-		if (!ctx.editToken) {
+		ctx.csrfToken = $(xml).find('page').attr('csrfToken');
+		if (!ctx.csrfToken) {
 			ctx.statusElement.error(wgULS('未能抓取编辑令牌。', '未能擷取編輯權杖。'));
 			ctx.onLoadFailure(this);
 			return;
@@ -2679,7 +2679,7 @@ Morebits.wiki.page = function(pageName, currentAction) {
 		var pageTitle, token;
 
 		if (fnCanUseMwUserToken('delete')) {
-			token = mw.user.tokens.get('editToken');
+			token = mw.user.tokens.get('csrfToken');
 			pageTitle = ctx.pageName;
 		} else {
 			var xml = ctx.deleteApi.getXML();
@@ -2852,7 +2852,7 @@ Morebits.wiki.page = function(pageName, currentAction) {
 			return;
 		}
 
-		var stabilizeToken = $(xml).find('page').attr('edittoken');
+		var stabilizeToken = $(xml).find('page').attr('csrfToken');
 		if (!stabilizeToken) {
 			ctx.statusElement.error('不能抓取stabilize令牌。');
 			ctx.onStabilizeFailure(this);
@@ -2979,7 +2979,7 @@ Morebits.wiki.flow = function(pageName, currentAction) {
 		//        watchlistOption: 'nochange',
 		// internal status
 		headerLoaded: false,
-		editToken: null,
+		csrfToken: null,
 		// loadTime: null,
 		// lastEditTime: null,
 		// revertCurID: null,
@@ -3056,7 +3056,7 @@ Morebits.wiki.flow = function(pageName, currentAction) {
 		var query = {
 			action: 'flow',
 			page: ctx.pageName,
-			token: mw.user.tokens.get('editToken'),
+			token: mw.user.tokens.get('csrfToken'),
 			submodule: 'new-topic',
 			nttopic: ctx.topic,
 			ntcontent: ctx.content,
@@ -3101,7 +3101,7 @@ Morebits.wiki.flow = function(pageName, currentAction) {
 		var query = {
 			action: 'flow',
 			page: ctx.pageName,
-			token: mw.user.tokens.get('editToken'),
+			token: mw.user.tokens.get('csrfToken'),
 			submodule: 'edit-header',
 			ehprev_revision: ctx.headerLastRevision,
 			ehcontent: ctx.header,
@@ -3614,7 +3614,7 @@ Morebits.queryString.prototype.toString = function() {
 
 Morebits.queryString.create = function(arr) {
 	var resarr = [];
-	var editToken;  // KLUGE: this should always be the last item in the query string (bug TW-B-0013)
+	var csrfToken;  // KLUGE: this should always be the last item in the query string (bug TW-B-0013)
 	for (var i in arr) {
 		if (arr[i] === undefined) {
 			continue;
@@ -3630,13 +3630,13 @@ Morebits.queryString.create = function(arr) {
 			res = encodeURIComponent(arr[i]);
 		}
 		if (i === 'token') {
-			editToken = res;
+			csrfToken = res;
 		} else {
 			resarr.push(encodeURIComponent(i) + '=' + res);
 		}
 	}
-	if (editToken !== undefined) {
-		resarr.push('token=' + editToken);
+	if (csrfToken !== undefined) {
+		resarr.push('token=' + csrfToken);
 	}
 	return resarr.join('&');
 };

@@ -413,7 +413,7 @@ Twinkle.fluff.callbacks = {
 			var lastrevid = parseInt($(xmlDoc).find('page').attr('lastrevid'), 10);
 			var touched = $(xmlDoc).find('page').attr('touched');
 			var starttimestamp = $(xmlDoc).find('page').attr('starttimestamp');
-			var edittoken = $(xmlDoc).find('page').attr('edittoken');
+			var csrfToken = $(xmlDoc).find('page').attr('csrfToken');
 			var revertToRevID = $(xmlDoc).find('rev').attr('revid');
 			var revertToUser = $(xmlDoc).find('rev').attr('user');
 
@@ -434,7 +434,7 @@ Twinkle.fluff.callbacks = {
 				'title': self.params.title,
 				'tags': Twinkle.getPref('revisionTags'),
 				'summary': summary,
-				'token': edittoken,
+				'token': csrfToken,
 				'undo': lastrevid,
 				'undoafter': revertToRevID,
 				'basetimestamp': touched,
@@ -461,7 +461,7 @@ Twinkle.fluff.callbacks = {
 		var lastrevid = parseInt($(xmlDoc).find('page').attr('lastrevid'), 10);
 		var touched = $(xmlDoc).find('page').attr('touched');
 		var starttimestamp = $(xmlDoc).find('page').attr('starttimestamp');
-		var edittoken = $(xmlDoc).find('page').attr('edittoken');
+		var csrfToken = $(xmlDoc).find('page').attr('csrfToken');
 		var lastuser = $(xmlDoc).find('rev').attr('user');
 
 		var revs = $(xmlDoc).find('rev');
@@ -646,7 +646,7 @@ Twinkle.fluff.callbacks = {
 			'title': self.params.pagename,
 			'tags': Twinkle.getPref('revisionTags'),
 			'summary': summary,
-			'token': edittoken,
+			'token': csrfToken,
 			'undo': lastrevid,
 			'undoafter': self.params.goodid,
 			'basetimestamp': touched,
