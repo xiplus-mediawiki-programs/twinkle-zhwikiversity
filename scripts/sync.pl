@@ -425,12 +425,8 @@ USAGE
 ## updating all files.
 __DATA__
 twinkle.js
-  twinkle.css
-  twinkle-pagestyles.css
   morebits.js
   morebits.css
-  lib/select2.min.js
-  lib/select2.min.css
   modules/twinkleconfig.js
   modules/twinklearv.js
   modules/twinklebatchdelete.js
@@ -443,11 +439,9 @@ twinkle.js
   modules/twinkleimage.js
   modules/twinkleprotect.js
   modules/twinklespeedy.js
-  modules/twinklestub.js
   modules/twinkleunlink.js
   modules/twinklewarn.js
   modules/twinklexfd.js
   modules/friendlyshared.js
   modules/friendlytag.js
   modules/friendlytalkback.js
-  modules/friendlywelcome.js
