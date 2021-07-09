@@ -117,7 +117,7 @@ Twinkle.batchundelete.callback.evaluate = function(event) {
 	batchOperation.setPageList(pages);
 	batchOperation.run(function(pageName) {
 		var query = {
-			'token': mw.user.tokens.get().editToken,
+			'token': mw.user.tokens.get().csrfToken,
 			'title': pageName,
 			'action': 'undelete',
 			'reason': reason + Twinkle.getPref('deletionSummaryAd'),
